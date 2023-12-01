@@ -8,7 +8,6 @@ def pascal_triangle(n):
 
     new_list = []
     if n <= 0:
-        print("hello")
         return new_list
     if n == 1:
         new_list.append([1])
