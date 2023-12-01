@@ -6,12 +6,14 @@ def pascal_triangle(n):
     """returns a list of lists of integers representing the pascal's
     triangle of n"""
 
-    if n <= 0:
-        return []
     new_list = []
+    if n <= 0:
+        print("hello")
+        return new_list
     m = 1
     if n == 1:
         new_list.append([1])
+        return new_list
     if n > 1:
         while m <= n:
             i = 0
