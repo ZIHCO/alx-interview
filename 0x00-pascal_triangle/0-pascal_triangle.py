@@ -10,10 +10,10 @@ def pascal_triangle(n):
     if n <= 0:
         print("hello")
         return new_list
-    m = 1
     if n == 1:
         new_list.append([1])
         return new_list
+    m = 1
     if n > 1:
         while m <= n:
             i = 0
