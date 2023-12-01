@@ -23,8 +23,8 @@ def pascal_triangle(n):
                 elif (i + 1) == m:
                     sub_list.append(1)
                 else:
-                    sub_list.append((last_list[i - 1]
-                                    + last_list[i]))
+                    sub_list.append((last_list[i - 1] +
+                                     last_list[i]))
                 i += 1
             last_list = sub_list[:]
             new_list.append(sub_list)
