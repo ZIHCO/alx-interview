@@ -1,32 +1,32 @@
 #!/usr/bin/python3
-"""This module contain a definition, pascal_triangle"""
+"""script contains a the pascal triangle function"""
 
 
-def pascal_triangle(n):
-    """returns a list of lists of integers representing the pascal's
-    triangle of n"""
-
-    new_list = []
+def pascal_triangle(n: int):
+    """the pascal triangle function returns
+    a list."""
     if n <= 0:
-        return new_list
-    if n == 1:
-        new_list.append([1])
-        return new_list
-    m = 1
-    if n > 1:
-        while m <= n:
-            i = 0
-            sub_list = []
-            while i < m:
-                if i == 0:
-                    sub_list.append(1)
-                elif (i + 1) == m:
-                    sub_list.append(1)
-                else:
-                    sub_list.append((last_list[i - 1] +
-                                     last_list[i]))
-                i += 1
-            last_list = sub_list[:]
-            new_list.append(sub_list)
-            m += 1
-        return new_list
+        return []
+    list_rows = []
+    previous_row = []
+    for i in range(1, n + 1):
+        if len(list_rows) > 0:
+            previous_row = row
+        row = []
+        j = 0
+        while j <= i:
+            if j == 0:
+                row.append(1)
+            elif len(row) == i - 1:
+                row.append(1)
+            elif previous_row:
+                k = 1
+                while k < len(previous_row):
+                    k_entry = previous_row[k] + previous_row[k - 1]
+                    row.append(k_entry)
+                    k += 1
+                    j += 1
+            j += 1
+
+        list_rows.append(row)
+    return list_rows
