@@ -7,4 +7,5 @@ def minOperations(n):
     a copy all and paste operations of the string 'H'"""
 
     if type(n) == int and n > 1:
+        pass
     return 0
