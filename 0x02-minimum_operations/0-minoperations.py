@@ -6,8 +6,8 @@ def minOperations(n):
     """returns the minimum number of time to perform
     a copy all and paste operations of the string 'H'"""
 
-    if type(n) == int:
-        """listOfMultiples = []
+    if type(n) == int and n > 1:
+        listOfMultiples = []
         for i in range(1, n + 1):
             if n % i == 0:
                 listOfMultiples.append(i)
@@ -52,5 +52,5 @@ def minOperations(n):
                 numberOfH += previousNumberOfH
             if (n % 2) == 0:
                 return len(operations) - 1
-            return len(operations)"""
+            return len(operations)
     return 0
