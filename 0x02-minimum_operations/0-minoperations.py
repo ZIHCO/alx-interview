@@ -2,7 +2,7 @@
 """contains the definition minOperations(n)"""
 
 
-def minOperations(n) -> int:
+def minOperations(n):
     """returns the minimum number of time to perform
     a copy all and paste operations of the string 'H'"""
 
