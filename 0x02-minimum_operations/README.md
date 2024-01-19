@@ -1,0 +1,1 @@
+-- Minimum Operations for a bi-operations: copy all & paste
