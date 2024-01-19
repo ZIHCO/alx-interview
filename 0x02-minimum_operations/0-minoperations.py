@@ -13,8 +13,6 @@ def minOperations(n):
                 listOfMultiples.append(i)
         numberOfH = "H"
         operations = ""
-        if len(listOfMultiples) == 2 and n != 2:
-            return 0
         for i in listOfMultiples:
             if i == 1:
                 operations += "cp"
@@ -24,6 +22,8 @@ def minOperations(n):
                     numberOfH += "H"
                 continue
             if len(numberOfH) == listOfMultiples[-1]:
+                if len(operations) == n:
+                    return 0
                 return len(operations)
             if i == listOfMultiples[1]:
                 if listOfMultiples[2] % i != 0:
@@ -43,6 +43,8 @@ def minOperations(n):
                     operations += "p"
                     numberOfH += previousNumberOfH
                 if len(numberOfH) == listOfMultiples[-1]:
+                    if len(operations) == n:
+                        return 0
                     return len(operations)
                 continue
 
@@ -53,5 +55,9 @@ def minOperations(n):
                 operations += "p"
                 numberOfH += previousNumberOfH
             if (n % 2) == 0:
+                if len(operations) == n:
+                    return 0
                 return len(operations) - 1
+            if len(operations) == n:
+                return 0
             return len(operations)
