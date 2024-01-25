@@ -19,8 +19,7 @@ try:
                   }
     count = 0
     total_size = 0
-    line = sys.stdin.readline()
-    while line != '':
+    for line in sys.stdin:
         count += 1
         if bool(pattern.match(line)):
             list_line = line.split()
@@ -33,7 +32,6 @@ try:
                 for key in sorted(metric_dict.keys()):
                     if metric_dict[key] > 0:
                         print(f"{key}: {metric_dict[key]}")
-        line = sys.stdin.readline()
 except KeyboardInterrupt:
     print(f"File size: {total_size}")
     for key in sorted(metric_dict.keys()):
