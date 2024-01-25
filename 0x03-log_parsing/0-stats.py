@@ -4,7 +4,7 @@ import re
 import sys
 
 
-if __name__ == "__main__":
+try:
     pattern = re.compile(r'(\d+\.\d+\.\d+\.\d+) - \[([^\]]+)\]'
                          r' "GET /projects/260 HTTP/1.1" (\d+) (\d+)')
     metric_dict = {
@@ -34,3 +34,9 @@ if __name__ == "__main__":
                     if metric_dict[key] > 0:
                         print(f"{key}: {metric_dict[key]}")
         line = sys.stdin.readline()
+except KeyboardInterrupt:
+    print(f"File size: {total_size}")
+    for key in sorted(metric_dict.keys()):
+        if metric_dict[key] > 0:
+            print(f"{key}: {metric_dict[key]}")
+    raise
