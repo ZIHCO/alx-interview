@@ -1,40 +1,52 @@
 #!/usr/bin/python3
-"""log parsing"""
-import re
 import sys
 
 
+def print_info():
+    print('File size: {:d}'.format(file_size))
+
+    for scode, code_times in sorted(status_codes.items()):
+        if code_times > 0:
+            print('{}: {:d}'.format(scode, code_times))
+
+
+status_codes = {
+    '200': 0,
+    '301': 0,
+    '400': 0,
+    '401': 0,
+    '403': 0,
+    '404': 0,
+    '405': 0,
+    '500': 0
+}
+
+lc = 0
+file_size = 0
+
 try:
-    pattern = re.compile(r'(\d+\.\d+\.\d+\.\d+) - \[([^\]]+)\]'
-                         r' "GET /projects/260 HTTP/1.1" (\d+) (\d+)')
-    metric_dict = {
-                   '200': 0,
-                   '301': 0,
-                   '400': 0,
-                   '401': 0,
-                   '403': 0,
-                   '404': 0,
-                   '405': 0,
-                   '500': 0
-                  }
-    count = 0
-    total_size = 0
     for line in sys.stdin:
-        count += 1
-        if bool(pattern.match(line)):
-            list_line = line.split()
-            status_code = list_line[-2]
-            file_size = list_line[-1]
-            total_size += int(file_size)
-            metric_dict[status_code] += 1
-            if count % 10 == 0:
-                print(f"File size: {total_size}")
-                for key in sorted(metric_dict.keys()):
-                    if metric_dict[key] > 0:
-                        print(f"{key}: {metric_dict[key]}")
+        if lc != 0 and lc % 10 == 0:
+            print_info()
+
+        pieces = line.split()
+
+        try:
+            status = int(pieces[-2])
+
+            if str(status) in status_codes.keys():
+                status_codes[str(status)] += 1
+        except Exception:
+            pass
+
+        try:
+            file_size += int(pieces[-1])
+        except Exception:
+            pass
+
+        lc += 1
+
+    print_info()
 except KeyboardInterrupt:
-    print(f"File size: {total_size}")
-    for key in sorted(metric_dict.keys()):
-        if metric_dict[key] > 0:
-            print(f"{key}: {metric_dict[key]}")
+    print_info()
     raise
