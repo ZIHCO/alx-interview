@@ -3,6 +3,7 @@
 
 
 def rotate_2d_matrix(matrix):
+    """rotates a matrix 90deg clockwise"""
     dimension = len(matrix)
     row_i = 0
     row_n = len(matrix) - 1  # where row_n is dimension - i
