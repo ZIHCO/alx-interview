@@ -5,7 +5,7 @@
 def rotate_2d_matrix(matrix):
     """rotates a matrix 90deg clockwise"""
     dimension = len(matrix)
-    row_i = 0
+    """row_i = 0
     row_n = len(matrix) - 1  # where row_n is dimension - i
     # to rotate the matrix 90 deg anticlockwise
     for num in range(dimension // 2):
@@ -14,7 +14,8 @@ def rotate_2d_matrix(matrix):
             temp_entry = matrix[row_i][col]
             matrix[row_i][col] = matrix[row_n][col]
             matrix[row_n][col] = temp_entry
-            col += 1
+            col += 1"""
+    matrix.reverse()
 
     # to rotate again the matrix 180 deg ie 270 anticlock = 90 clockwise
     i = 0
